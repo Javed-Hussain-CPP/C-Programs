@@ -140,18 +140,19 @@ int* merge(int x,int y)
         scanf("%d",&q[i]);
     }
 
-    int *r=(int*)malloc(x+y);
+    int *r=(int*)malloc((x+y)*sizeof(int));
     for(int i=0,j=0; i<x || j<y ;)
     {
         if(i<x)
         {
             r[i]=p[i];
-            i++
+            i++;
         }
         else
         {
             r[i]=q[j];
             j++;
+            i++;
         }
     }
     free(p);
@@ -161,7 +162,20 @@ int* merge(int x,int y)
 
 void sort(int *ptr,int size)
 {
-    for(int r=1; r<)
+    for(int r=1; r<size; r++)
+    {
+        for(int i=0; i<size-r; i++)
+        {
+            if(ptr[i]>ptr[i+1])
+            {
+                int temp=ptr[i+1];
+                ptr[i+1]=ptr[i];
+                ptr[i]=temp;
+            }
+            else
+            continue;
+        }
+    }
 }
 
 int main()
@@ -175,4 +189,6 @@ int main()
     {
         printf("%d ",s[i]);
     }
+    free(s);
+    return 0;
 }
